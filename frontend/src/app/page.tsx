@@ -16,7 +16,7 @@ export default function Home() {
     setError(null);
     
     try {
-      const response = await fetch(`/api/weather?location=${encodeURIComponent(location)}`);
+      const response = await fetch(`http://localhost:8000/api/weather?location=${encodeURIComponent(location)}`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch weather data');

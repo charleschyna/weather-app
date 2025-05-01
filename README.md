@@ -4,11 +4,9 @@ A modern weather application with a decoupled architecture featuring a NextJS fr
 
 ## Architecture Overview
 
-![Architecture Diagram](https://i.imgur.com/JQGJjLZ.png)
-
 This application follows a decoupled architecture with:
 
-- **Frontend**: NextJS with TypeScript and RippleUI components from Tailwind CSS
+- **Frontend**: NextJS with TypeScript and Tailwind CSS for styling
 - **Backend**: Laravel API that serves as a proxy to the OpenWeatherMap API
 - **External API**: OpenWeatherMap API for weather data
 
@@ -20,7 +18,6 @@ weather-app/
 │   ├── src/           # Source code
 │   │   ├── app/       # Next.js App Router
 │   │   ├── components/# React components
-│   │   ├── lib/       # Utility functions
 │   │   └── types/     # TypeScript type definitions
 │   ├── public/        # Static assets
 │   └── package.json   # Frontend dependencies
@@ -37,10 +34,11 @@ weather-app/
 ## Features
 
 - Current weather conditions
-- 5-day weather forecast
-- Hourly weather forecast
+- 3-day weather forecast
 - Location search
 - Temperature unit conversion (°C/°F)
+- Wind status information
+- Humidity information
 - Responsive design for all devices
 - API caching for improved performance
 
@@ -79,14 +77,14 @@ weather-app/
    cd backend
    ```
 
-2. Install Laravel and dependencies:
+2. Install dependencies:
    ```
-   composer create-project laravel/laravel .
+   composer install
    ```
 
 3. Copy the environment file and configure:
    ```
-   cp .env.example .env
+   copy .env.example .env
    ```
 
 4. Add your OpenWeatherMap API key to the `.env` file:
@@ -101,10 +99,29 @@ weather-app/
 
 6. Start the Laravel development server:
    ```
-   php artisan serve
+   php -S localhost:8000 -t public
+   ```
+   
+   Or use the provided batch file:
+   ```
+   start.bat
    ```
 
 7. The API will be available at http://localhost:8000
+
+## Running the Complete Application
+
+1. Start the backend server first (from the backend directory):
+   ```
+   php -S localhost:8000 -t public
+   ```
+
+2. Start the frontend development server (from the frontend directory):
+   ```
+   npm run dev
+   ```
+
+3. Open your browser and navigate to http://localhost:3000
 
 ## API Endpoints
 
@@ -118,10 +135,9 @@ Get current weather and forecast data for a location.
 
 ## Development Notes
 
-- The frontend uses the JS fetch API to make AJAX requests to the backend
+- The frontend uses the fetch API to make AJAX requests to the backend
 - The backend implements caching to reduce API calls to OpenWeatherMap
 - CORS is configured to allow requests from the frontend
-- No authentication is implemented as per requirements
 
 ## Future Improvements
 

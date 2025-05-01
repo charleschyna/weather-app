@@ -1,0 +1,3 @@
+@echo off
+echo Starting Weather App Backend Server...
+php -S localhost:8000 -t public
