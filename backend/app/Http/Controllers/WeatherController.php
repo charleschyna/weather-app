@@ -180,8 +180,8 @@ class WeatherController extends Controller
             'location' => [
                 'name' => $locationData['name'] ?? 'Unknown',
                 'country' => $locationData['country'] ?? '',
-                'lat' => $lat,
-                'lon' => $lon,
+                'lat' => $data['lat'], 
+                'lon' => $data['lon'], 
             ],
             'current' => [
                 'temp' => $data['current']['temp'],
